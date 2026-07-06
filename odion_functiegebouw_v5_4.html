@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Odion – Functiecatalogus</title>
+<style>
+/* ── RESET & BASE ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+  background: #F7F4F9;
+  color: #1E1024;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --pu:       #7B2D8B;
+  --pu-dark:  #5A1E68;
+  --pu-light: #F3EEF6;
+  --pu-mid:   #C9A8D4;
+  --or:       #D05A1A;
+  --or-light: #FBF0E8;
+  --white:    #FFFFFF;
+  --bg:       #F7F4F9;
+  --border:   #E4DCE9;
+  --border2:  #CFC4D6;
+  --txt:      #1E1024;
+  --txt2:     #5C4466;
+  --txt3:     #9980A4;
+  --red:      #C8102E;
+  --yellow:   #F0C430;
+  --green:    #2A7A4B;
+
+  /* domain colours – exactly matching mockups */
+  --beg:      #C8102E;
+  --beg-bg:   #FCEEF0;
+  --beg-bd:   #EFAAB4;
+  --mul:      #D4A830;
+  --mul-bg:   #FDF8EB;
+  --mul-bd:   #E8D090;
+  --sso:      #6B4FA0;
+  --sso-bg:   #F0EBF8;
+  --sso-bd:   #BCA8D8;
+  --lei:      #C8102E;
+  --lei-bg:   #FCEEF0;
+  --lei-bd:   #EFAAB4;
+
+  --banner-h: 38px;
+}
+
+/* ── CONCEPT BANNER ──────────────────────────────────── */
+.concept-banner {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: var(--banner-h);
+  background: #8A2F1E;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 16px;
+  letter-spacing: 0.2px;
+}
+.concept-banner .cb-label {
+  background: #FFFFFF;
+  color: #8A2F1E;
+  border-radius: 3px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* ── NAV ─────────────────────────────────────────────── */
+.nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+  position: sticky;
+  top: var(--banner-h);
+  z-index: 100;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--pu);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-brand svg { display: block; }
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--txt2);
+  text-decoration: none;
+  cursor: pointer;
+  padding-bottom: 3px;
+  transition: color .15s;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover { color: var(--pu); }
+.nav-links a.active {
+  color: var(--pu);
+  font-weight: 600;
+  border-bottom-color: var(--pu);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 12.5px;
+  color: var(--txt3);
+  cursor: text;
+  min-width: 200px;
+}
+.nav-icon-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--txt2);
+  cursor: pointer;
+  text-decoration: none;
+}
+.nav-icon-link:hover { color: var(--pu); }
+
+/* ── PAGES ───────────────────────────────────────────── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ══════════════════════════════════════════════════════
+   PAGE 1 – HOMEPAGE (slide 4)
+══════════════════════════════════════════════════════ */
+.hp-hero {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.hp-hero-left {
+  padding: 40px 36px 36px;
+}
+.hp-hero-right {
+  background: var(--pu);
+  position: relative;
+  overflow: hidden;
+  min-height: 240px;
+}
+.hp-hero-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+.hp-hero-right-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--pu-dark) 0%, var(--pu) 60%, #9B4AAB 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hp-hero-right-placeholder svg { opacity: 0.3; }
+.hp-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--txt);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+.hp-sub {
+  font-size: 13.5px;
+  color: var(--txt2);
+  max-width: 480px;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+.hp-searchbar {
+  display: flex;
+  max-width: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1.5px solid var(--border2);
+  background: var(--white);
+  margin-bottom: 12px;
+}
+.hp-searchbar input {
+  flex: 1;
+  padding: 11px 14px;
+  border: none;
+  outline: none;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: var(--txt);
+}
+.hp-searchbar input::placeholder { color: var(--txt3); }
+.hp-searchbar button {
+  background: var(--pu);
+  color: var(--white);
+  border: none;
+  padding: 0 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .15s;
+}
+.hp-searchbar button:hover { background: var(--pu-dark); }
+.hp-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--txt3);
+  align-items: center;
+}
+.hp-tag-label { font-size: 12px; }
+.hp-tag {
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 20px;
+  padding: 3px 11px;
+  cursor: pointer;
+  color: var(--txt2);
+  transition: all .15s;
+}
+.hp-tag:hover { border-color: var(--pu); color: var(--pu); }
+
+/* domain cards */
+.hp-domains {
+  padding: 32px 36px;
+  background: var(--bg);
+}
+.hp-domains-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--txt);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hp-domain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.hp-domain-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 18px 16px;
+  cursor: pointer;
+  transition: border-color .15s, transform .12s, box-shadow .15s;
+}
+.hp-domain-card:hover {
+  border-color: var(--pu-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(123,45,139,0.10);
+}
+.hp-domain-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+.ic-beg { background: var(--beg); }
+.ic-mul { background: var(--mul); }
+.ic-sso { background: var(--sso); }
+.ic-lei { background: var(--beg); }
+.hp-domain-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.nm-beg { color: var(--beg); }
+.nm-mul { color: var(--mul); }
+.nm-sso { color: var(--sso); }
+.nm-lei { color: var(--lei); }
+.hp-domain-desc { font-size: 12px; color: var(--txt2); line-height: 1.5; margin-bottom: 14px; }
+.hp-domain-link {
+  font-size: 12.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: gap .15s;
+}
+.lk-beg { color: var(--beg); }
+.lk-mul { color: var(--mul); }
+.lk-sso { color: var(--sso); }
+.lk-lei { color: var(--lei); }
+.hp-domain-link:hover { gap: 8px; }
+
+/* bottom 3-col section */
+.hp-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 0 36px 32px;
+  background: var(--bg);
+}
+.hp-bottom-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 18px 14px;
+}
+.hp-bottom-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--txt);
+  margin-bottom: 12px;
+}
+.hp-bottom-card-head svg { color: var(--pu); }
+.hp-func-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 12.5px;
+  transition: color .1s;
+}
+.hp-func-row:last-of-type { border-bottom: none; }
+.hp-func-row:hover { color: var(--pu); }
+.hp-func-fwg { font-size: 11px; color: var(--txt3); }
+.hp-path {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--txt2);
+  margin-bottom: 10px;
+}
+.hp-path-arrow {
+  background: var(--pu-light);
+  border: 1px solid var(--pu-mid);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--pu);
+  font-weight: 500;
+  cursor: pointer;
+}
+.hp-path-chevron { color: var(--txt3); font-size: 12px; }
+.hp-link-small {
+  font-size: 12px;
+  color: var(--pu);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+.hp-link-small:hover { text-decoration: underline; }
+.hp-fav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12.5px;
+}
+.hp-fav-row:last-of-type { border-bottom: none; }
+.hp-fav-fwg {
+  font-size: 11px;
+  background: var(--pu-light);
+  color: var(--pu);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+.hp-fav-x { color: var(--txt3); cursor: pointer; font-size: 14px; }
+.hp-fav-x:hover { color: var(--red); }
+
+/* right sidebar */
+.hp-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+}
+.hp-main {}
+.hp-sidebar {
+  background: var(--white);
+  border-left: 1px solid var(--border);
+  padding: 24px 20px;
+}
+.hp-sidebar-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 4px;
+}
+.hp-sidebar-sub { font-size: 12px; color: var(--txt2); margin-bottom: 14px; }
+.hp-odi-chat {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.hp-odi-chat input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--txt);
+  outline: none;
+}
+.hp-odi-send {
+  background: var(--pu);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.hp-odi-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--txt2);
+  cursor: pointer;
+}
+.hp-odi-question:hover { color: var(--pu); }
+.hp-odi-question:last-of-type { border-bottom: none; }
+.sidebar-divider { height: 1px; background: var(--border); margin: 18px 0; }
+.hp-quick-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+.hp-quick-link:hover .hp-ql-title { color: var(--pu); }
+.hp-quick-link:last-child { border-bottom: none; }
+.hp-ql-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--pu-light);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pu);
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.hp-ql-title { font-size: 12.5px; font-weight: 600; color: var(--txt); margin-bottom: 2px; }
+.hp-ql-sub { font-size: 11.5px; color: var(--txt3); }
+.hp-info-bar {
+  background: var(--pu-light);
+  border-top: 1px solid var(--pu-mid);
+  padding: 12px 36px;
+  font-size: 12px;
+  color: var(--txt2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hp-footer {
+  background: var(--pu-dark);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 24px 36px;
+  gap: 24px;
+}
+.hp-footer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(255,255,255,0.85);
+}
+.hp-footer-icon {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.hp-footer-title { font-size: 12.5px; font-weight: 600; margin-bottom: 3px; }
+.hp-footer-sub { font-size: 11.5px; opacity: 0.7; line-height: 1.4; }
+
+/* ══════════════════════════════════════════════════════
+   PAGE 2 – GENERIEKE LANDINGSPAGINA (slide 5)
+══════════════════════════════════════════════════════ */
+.breadcrumb {
+  padding: 14px 36px;
+  font-size: 12px;
+  color: var(--txt3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+.breadcrumb a {
+  color: var(--txt3);
+  cursor: pointer;
+  text-decoration: none;
+}
+.breadcrumb a:hover { color: var(--pu); }
+.breadcrumb .bc-sep { font-size: 11px; }
+.breadcrumb .bc-cur { color: var(--pu); font-weight: 500; }
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--pu);
+  cursor: pointer;
+  padding: 12px 36px 0;
+  text-decoration: none;
+}
+.back-link:hover { text-decoration: underline; }
+.glp-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+}
+.glp-main { padding: 24px 36px 36px; background: var(--white); }
+.glp-sidebar { background: var(--bg); border-left: 1px solid var(--border); padding: 24px 20px; }
+.glp-hero { display: grid; grid-template-columns: 1fr 280px; gap: 28px; margin-bottom: 28px; }
+.glp-h1-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.glp-h1 { font-size: 26px; font-weight: 700; color: var(--txt); }
+.glp-fwg-badge {
+  background: var(--pu-light);
+  border: 1px solid var(--pu-mid);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pu);
+}
+.glp-desc { font-size: 13.5px; color: var(--txt2); line-height: 1.7; }
+.glp-photo {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #d0c0dc 0%, #b89cc8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.glp-photo svg { opacity: 0.4; }
+.glp-table-section {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.glp-table-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.glp-table-title { font-size: 14px; font-weight: 600; color: var(--txt); }
+.glp-table { width: 100%; border-collapse: collapse; }
+.glp-th {
+  text-align: left;
+  padding: 10px 20px;
+  font-size: 11.5px;
+  color: var(--txt3);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+}
+.glp-row {
+  display: table-row;
+  cursor: pointer;
+  transition: background .1s;
+}
+.glp-row:hover td { background: var(--pu-light); }
+.glp-td { padding: 13px 20px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.glp-row:last-child .glp-td { border-bottom: none; }
+.glp-func-icon {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--pu-mid);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pu);
+  font-size: 16px;
+}
+.glp-func-name { font-size: 13px; font-weight: 600; color: var(--txt); }
+.glp-func-desc { font-size: 12px; color: var(--txt2); line-height: 1.4; margin-top: 2px; }
+.glp-context-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--txt2);
+}
+.glp-more-note {
+  padding: 12px 20px;
+  font-size: 12px;
+  color: var(--txt3);
+  font-style: italic;
+  border-top: 1px solid var(--border);
+}
+
+.glp-sb-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.glp-sb-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--txt);
+  margin-bottom: 8px;
+}
+.glp-sb-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.glp-check-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--txt2);
+  padding: 3px 0;
+}
+.glp-check { color: var(--pu); font-size: 14px; }
+.glp-sb-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pu);
+  cursor: pointer;
+  margin-top: 10px;
+}
+.glp-sb-link:hover { text-decoration: underline; }
+.glp-cta-bar {
+  background: var(--pu-dark);
+  color: var(--white);
+  padding: 18px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0;
+}
+.glp-cta-text { font-size: 14px; font-weight: 600; }
+.glp-cta-sub { font-size: 12px; opacity: 0.75; }
+.glp-cta-btn {
+  background: var(--white);
+  color: var(--pu-dark);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ══════════════════════════════════════════════════════
+   PAGE 3 – ROLPAGINA (slide 6)
+══════════════════════════════════════════════════════ */
+.rp-layout { display: grid; grid-template-columns: 1fr 300px; background: var(--white); }
+.rp-main { padding: 24px 36px 36px; }
+.rp-h1 { font-size: 28px; font-weight: 700; color: var(--txt); margin-bottom: 10px; }
+.rp-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.rp-badge {
+  background: var(--pu-light);
+  border: 1px solid var(--pu-mid);
+  border-radius: 6px;
+  padding: 3px 11px;
+  font-size: 12px;
+  color: var(--pu);
+  font-weight: 500;
+}
+.rp-intro { font-size: 13.5px; color: var(--txt2); line-height: 1.7; max-width: 560px; margin-bottom: 22px; }
+.rp-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  background: var(--bg);
+}
+.rp-card { text-align: center; }
+.rp-card-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--pu-mid);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  font-size: 18px;
+  color: var(--pu);
+}
+.rp-card-label { font-size: 11.5px; font-weight: 600; color: var(--txt); margin-bottom: 4px; }
+.rp-card-text { font-size: 11px; color: var(--txt2); line-height: 1.4; }
+
+.rp-section-title { font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 8px; }
+.rp-section-intro { font-size: 13.5px; color: var(--txt2); margin-bottom: 12px; line-height: 1.6; }
+.rp-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--txt2);
+}
+.rp-check-row:last-child { border-bottom: none; }
+.rp-check { color: var(--pu); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.rp-more-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pu);
+  cursor: pointer;
+  margin-top: 14px;
+}
+.rp-more-link:hover { text-decoration: underline; }
+
+.rp-sidebar {
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  padding: 24px 20px;
+}
+.rp-sb-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+.rp-sb-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.rp-sb-pdf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.rp-sb-pdf-row:hover { color: var(--pu); }
+.rp-sb-pdf-row:last-child { border-bottom: none; }
+.rp-pdf-label { font-size: 12.5px; }
+.rp-pdf-sub { font-size: 11px; color: var(--txt3); }
+.rp-pdf-icon {
+  width: 28px;
+  height: 28px;
+  background: #FEE8E8;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--red);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.rp-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1.5px solid var(--pu);
+  background: var(--white);
+  color: var(--pu);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+  transition: all .15s;
+}
+.rp-btn:hover { background: var(--pu); color: var(--white); }
+.rp-btn-solid {
+  background: var(--pu);
+  color: var(--white);
+}
+.rp-btn-solid:hover { background: var(--pu-dark); }
+.rp-sb-green-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 12.5px;
+  color: var(--txt2);
+  cursor: pointer;
+}
+.rp-sb-green-row:hover { color: var(--pu); }
+.rp-location-banner {
+  margin-top: 16px;
+  background: var(--pu-light);
+  border: 1px dashed var(--pu-mid);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--pu);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.rp-info-bar {
+  background: #F7F4F9;
+  border-top: 1px solid var(--border);
+  padding: 10px 36px;
+  font-size: 11.5px;
+  color: var(--txt3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ══════════════════════════════════════════════════════
+   PAGE 4 – FUNCTIEGEBOUW / MATRIX (slide 7)
+══════════════════════════════════════════════════════ */
+.fg-breadcrumb {
+  padding: 14px 36px;
+  font-size: 12px;
+  color: var(--txt3);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.fg-layout { display: grid; grid-template-columns: 1fr 300px; }
+.fg-main { padding: 28px 36px; background: var(--white); }
+.fg-h1 { font-size: 24px; font-weight: 700; color: var(--txt); margin-bottom: 4px; }
+.fg-sub { font-size: 13px; color: var(--txt2); margin-bottom: 24px; }
+
+/* filter panel */
+.fg-filters {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 18px 28px;
+  align-items: start;
+}
+.fg-filter-group { }
+.fg-filter-group.fg-domain-row { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: 16px; }
+.fg-filter-label { font-size: 11px; font-weight: 600; color: var(--txt3); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 8px; }
+.fg-level-chips { display: flex; gap: 5px; flex-wrap: wrap; }
+.fg-chip {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  border: 1px solid var(--border2);
+  background: var(--white);
+  color: var(--txt2);
+  cursor: pointer;
+  transition: all .12s;
+  font-family: inherit;
+}
+.fg-chip:hover { border-color: var(--pu); color: var(--pu); }
+.fg-chip.on { background: var(--pu); color: var(--white); border-color: var(--pu); }
+.fg-domain-checks { display: flex; flex-direction: column; gap: 6px; }
+.fg-check-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--txt2);
+  cursor: pointer;
+}
+.fg-check-label input { accent-color: var(--pu); cursor: pointer; }
+.fg-search-func {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fg-search-input-wrap { position: relative; }
+.fg-search-input-wrap input {
+  width: 200px;
+  padding: 7px 10px 7px 30px;
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--txt);
+  outline: none;
+  background: var(--white);
+}
+.fg-search-input-wrap input:focus { border-color: var(--pu); }
+.fg-search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--txt3); font-size: 14px; }
+.fg-result-box {
+  background: var(--white);
+  border: 1px solid var(--pu-mid);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.fg-result-lbl { font-size: 11px; color: var(--txt3); margin-bottom: 3px; }
+.fg-result-domain { font-size: 12.5px; font-weight: 600; color: var(--beg); }
+.fg-result-func { font-size: 12.5px; font-weight: 600; color: var(--beg); }
+.fg-result-fwg { font-size: 12.5px; font-weight: 700; color: var(--beg); }
+.fg-result-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 7px;
+  background: var(--beg);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* matrix grid */
+.fg-matrix { overflow-x: auto; }
+.fg-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+}
+.fg-matrix-table th, .fg-matrix-table td {
+  border: 1px solid #DDD5E6;
+  padding: 0;
+}
+.fg-th-fwg {
+  background: #5C5070;
+  color: #FFFFFF;
+  font-size: 10px;
+  text-align: center;
+  padding: 6px 4px;
+  font-weight: 600;
+  width: 42px;
+}
+.fg-th-domain {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+  padding: 6px 4px;
+  color: var(--white);
+}
+.fg-th-domain.beg { background: #A8384A; }
+.fg-th-domain.mul { background: #C49A28; }
+.fg-th-domain.sso { background: #7B6AA0; }
+.fg-th-domain.lei { background: #A8384A; }
+.fg-th-sub {
+  font-size: 8.5px;
+  text-align: center;
+  padding: 4px 2px;
+  line-height: 1.2;
+  vertical-align: bottom;
+  height: 50px;
+  color: #4A3A5C;
+  font-weight: 500;
+  width: 44px;
+  background: #F0EBF6;
+}
+.fg-cell {
+  text-align: center;
+  vertical-align: middle;
+  height: 24px;
+  width: 44px;
+  cursor: default;
+  background: #FDFCFE;
+}
+.fg-cell.has-letter {
+  cursor: pointer;
+  transition: filter .1s;
+}
+.fg-cell.has-letter:hover { filter: brightness(0.85); }
+.fg-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--white);
+}
+.fg-letter.beg { background: #A8384A; }
+.fg-letter.mul { background: #C49A28; color: #3A2800; }
+.fg-letter.sso { background: #7B6AA0; }
+.fg-letter.lei { background: #A8384A; }
+.fg-letter.you {
+  background: var(--red) !important;
+  border: 2px solid var(--white);
+  border-radius: 50% !important;
+  box-shadow: 0 0 0 2px var(--red);
+  color: var(--white) !important;
+}
+.fg-fwg-row { background: #F0EBF5; }
+.fg-fwg-lbl {
+  background: #5C5070;
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  padding: 4px 2px;
+}
+
+/* matrix detail */
+.fg-detail {
+  background: var(--pu-light);
+  border: 1px solid var(--pu-mid);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--pu-dark);
+  display: none;
+}
+.fg-detail.visible { display: block; }
+.fg-detail strong { font-weight: 600; }
+
+/* matrix legend */
+.fg-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.fg-leg-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--txt2);
+}
+.fg-leg-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* FG sidebar */
+.fg-sidebar {
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  padding: 24px 20px;
+}
+.fg-sb-odi {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.fg-odi-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--pu-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.fg-odi-title { font-size: 13px; font-weight: 600; color: var(--txt); margin-bottom: 3px; }
+.fg-odi-sub { font-size: 12px; color: var(--txt2); margin-bottom: 10px; }
+.fg-odi-questions { display: flex; flex-direction: column; gap: 4px; }
+.fg-odi-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--txt2);
+  cursor: pointer;
+}
+.fg-odi-q:last-child { border-bottom: none; }
+.fg-odi-q:hover { color: var(--pu); }
+.fg-odi-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 7px;
+  padding: 7px 10px;
+  margin-top: 10px;
+}
+.fg-odi-input input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 12.5px;
+  font-family: inherit;
+  outline: none;
+  color: var(--txt);
+}
+.fg-odi-send {
+  background: var(--pu);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fg-sb-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+.fg-sb-card-title { font-size: 12.5px; font-weight: 600; color: var(--txt); margin-bottom: 8px; }
+.fg-sb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--txt2);
+  cursor: pointer;
+}
+.fg-sb-row:hover { color: var(--pu); }
+.fg-sb-row:last-child { border-bottom: none; }
+
+.fg-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--txt3);
+}
+.fg-footer a {
+  color: var(--pu);
+  cursor: pointer;
+  text-decoration: none;
+}
+.fg-footer a:hover { text-decoration: underline; }
+
+/* ── SHARED UTILS ────────────────────────────────────── */
+.hidden { display: none !important; }
+.icon { display: inline-block; }
+
+/* tab indicator at bottom of nav link */
+.nav-tab-bar { display: flex; gap: 0; }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════ CONCEPT BANNER (blijft zichtbaar op alle pagina's) ═══════════ -->
+<div class="concept-banner">
+  <span class="cb-label">CONCEPT</span>
+  <span>Illustratie van de medewerkersreis — geen ontwerp, geen platformkeuze, geen beheerbesluit</span>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav">
+  <div class="nav-brand" onclick="goPage('home')">
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="15" cy="15" r="15" fill="#7B2D8B"/>
+      <circle cx="15" cy="10" r="4.5" fill="#FFFFFF"/>
+      <ellipse cx="15" cy="21.5" rx="6" ry="4.5" fill="#D05A1A"/>
+      <circle cx="21" cy="12" r="2.8" fill="#D05A1A"/>
+    </svg>
+    <span>Odion</span>
+  </div>
+  <div class="nav-links">
+    <a id="nl-home" class="active" onclick="goPage('home')">Functies ontdekken</a>
+    <a id="nl-fg" onclick="goPage('fg')">Vergelijken</a>
+    <a onclick="">Loopbaan &amp; ontwikkeling</a>
+    <a onclick="">Over de functiecatalogus</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-search">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Zoek op functie, trefwoord of expertise
+    </div>
+    <a class="nav-icon-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Favorieten
+    </a>
+    <a class="nav-icon-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Mijn profiel
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE 1 – HOMEPAGE (slide 4)
+═══════════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <div class="hp-layout">
+    <div class="hp-main">
+      <!-- hero -->
+      <div class="hp-hero">
+        <div class="hp-hero-left">
+          <h1 class="hp-title">Vind jouw functie.<br>Ontdek je mogelijkheden.</h1>
+          <p class="hp-sub">Zoek op functiefamilie, generieke functie, specialistische rol of expertise. Vergelijk functies, ontdek doorgroeimogelijkheden en ontwikkel jezelf.</p>
+          <div class="hp-searchbar">
+            <input id="hp-search" type="text" placeholder="Zoek op functie, trefwoord of expertise" oninput="hpSearch(this.value)">
+            <button onclick="hpSearch(document.getElementById('hp-search').value)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Zoeken
+            </button>
+          </div>
+          <div class="hp-tags">
+            <span class="hp-tag-label">Populaire zoekopdrachten:</span>
+            <span class="hp-tag" onclick="hpTagSearch('begeleider')">begeleider</span>
+            <span class="hp-tag" onclick="hpTagSearch('verpleegkundige')">verpleegkundige</span>
+            <span class="hp-tag" onclick="hpTagSearch('ict')">ict</span>
+            <span class="hp-tag" onclick="hpTagSearch('planner')">planner</span>
+            <span class="hp-tag" onclick="hpTagSearch('administratie')">administratie</span>
+            <span class="hp-tag" onclick="hpTagSearch('behandelaar')">behandelaar</span>
+          </div>
+        </div>
+        <div class="hp-hero-right">
+          <div class="hp-hero-right-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- domain cards -->
+      <div class="hp-domains">
+        <div class="hp-domains-title">
+          Verken functies per functiefamilie
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9980A4" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        </div>
+        <div class="hp-domain-grid">
+          <div class="hp-domain-card" onclick="goPage('glp')">
+            <div class="hp-domain-icon ic-beg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hp-domain-name nm-beg">Begeleiding</div>
+            <div class="hp-domain-desc">Ondersteuning en begeleiding van cliënten in hun dagelijks leven.</div>
+            <a class="hp-domain-link lk-beg">Bekijk functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+          <div class="hp-domain-card">
+            <div class="hp-domain-icon ic-mul">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="hp-domain-name nm-mul">Multidisciplinair</div>
+            <div class="hp-domain-desc">Diagnostiek, behandeling en specialistische expertise.</div>
+            <a class="hp-domain-link lk-mul">Bekijk functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+          <div class="hp-domain-card">
+            <div class="hp-domain-icon ic-sso">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </div>
+            <div class="hp-domain-name nm-sso">Services, Staff en Ondersteuning</div>
+            <div class="hp-domain-desc">Functies die de organisatie ondersteunen in bedrijfsvoering, ontwikkeling en dienstverlening.</div>
+            <a class="hp-domain-link lk-sso">Bekijk functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+          <div class="hp-domain-card">
+            <div class="hp-domain-icon ic-lei">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            </div>
+            <div class="hp-domain-name nm-lei">Leidinggevende</div>
+            <div class="hp-domain-desc">Aansturen, coachen en ontwikkelen van teams en organisatie.</div>
+            <a class="hp-domain-link lk-lei">Bekijk functies <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+        </div>
+
+        <!-- bottom 3 cards -->
+        <div class="hp-bottom">
+          <div class="hp-bottom-card">
+            <div class="hp-bottom-card-head">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Veel bekeken functies
+            </div>
+            <div class="hp-func-row" onclick="goPage('rp')">
+              <span>Persoonlijk Begeleider</span>
+              <span class="hp-func-fwg">FWG 40 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></span>
+            </div>
+            <div class="hp-func-row" onclick="goPage('rp')">
+              <span>Regiebegeleider</span>
+              <span class="hp-func-fwg">FWG 45 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></span>
+            </div>
+            <div class="hp-func-row">
+              <span>Praktijkcoördinator</span>
+              <span class="hp-func-fwg">FWG 50 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></span>
+            </div>
+            <div class="hp-func-row">
+              <span>Verpleegkundige</span>
+              <span class="hp-func-fwg">FWG 45 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></span>
+            </div>
+            <div class="hp-func-row">
+              <span>Adviseur ICT</span>
+              <span class="hp-func-fwg">FWG 50 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></span>
+            </div>
+            <a class="hp-link-small">Bekijk alle veel bekeken functies <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+          <div class="hp-bottom-card">
+            <div class="hp-bottom-card-head">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Ontdek doorgroeimogelijkheden
+            </div>
+            <p style="font-size:12px;color:var(--txt2);margin-bottom:12px;line-height:1.5;">Bekijk welke functies je volgende stap kunnen zijn.</p>
+            <div class="hp-path">
+              <div class="hp-path-arrow" onclick="goPage('rp')">Persoonlijk Begeleider<br><span style="font-size:10px;opacity:0.7;">(FWG 40)</span></div>
+              <span class="hp-path-chevron">→</span>
+              <div class="hp-path-arrow" onclick="goPage('glp')">Regiebegeleider<br><span style="font-size:10px;opacity:0.7;">(FWG 45)</span></div>
+              <span class="hp-path-chevron">→</span>
+              <div class="hp-path-arrow">Praktijkcoördinator<br><span style="font-size:10px;opacity:0.7;">(FWG 50)</span></div>
+            </div>
+            <a class="hp-link-small">Bekijk alle loopbaanpaden <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+          <div class="hp-bottom-card">
+            <div class="hp-bottom-card-head">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Jouw favorieten
+            </div>
+            <p style="font-size:12px;color:var(--txt2);margin-bottom:12px;line-height:1.5;">Sla functies op en vergelijk ze eenvoudig.</p>
+            <div class="hp-fav-row">
+              <span>Trajectbegeleider</span>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span class="hp-fav-fwg">FWG 45</span>
+                <span class="hp-fav-x" onclick="this.closest('.hp-fav-row').remove()">✕</span>
+              </div>
+            </div>
+            <div class="hp-fav-row">
+              <span>Verpleegkundige</span>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span class="hp-fav-fwg">FWG 45</span>
+                <span class="hp-fav-x" onclick="this.closest('.hp-fav-row').remove()">✕</span>
+              </div>
+            </div>
+            <div class="hp-fav-row">
+              <span>Adviseur ICT</span>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span class="hp-fav-fwg">FWG 50</span>
+                <span class="hp-fav-x" onclick="this.closest('.hp-fav-row').remove()">✕</span>
+              </div>
+            </div>
+            <a class="hp-link-small">Naar mijn favorieten <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></a>
+          </div>
+        </div>
+
+        <div class="hp-info-bar">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Deze functiecatalogus is gebaseerd op het Odion-functiehuis. Alle functies zijn ingedeeld volgens één logische structuur en FWG-systematiek.
+        </div>
+      </div>
+    </div>
+
+    <!-- sidebar -->
+    <div class="hp-sidebar">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--pu-light);display:flex;align-items:center;justify-content:center;font-size:18px;">🤖</div>
+        <div>
+          <div class="hp-sidebar-title">Hulp nodig?<br>Vraag het aan Odi</div>
+        </div>
+      </div>
+      <p class="hp-sidebar-sub">Onze AI-assistent helpt je snel op weg.</p>
+      <div class="hp-odi-chat">
+        <input type="text" placeholder="Stel hier je vraag…">
+        <button class="hp-odi-send">→</button>
+      </div>
+      <p style="font-size:11px;color:var(--txt3);margin-bottom:8px;">Voorbeelden van vragen:</p>
+      <div class="hp-odi-question">Welke functie past bij mijn werk? <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+      <div class="hp-odi-question">Wat is het verschil tussen Persoonlijk Begeleider en Regiebegeleider? <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+      <div class="hp-odi-question">Welke functies kan ik doorgroeien? <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+      <div class="hp-odi-question">Welke functies horen bij FWG 45? <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+      <div class="sidebar-divider"></div>
+      <p style="font-size:12.5px;font-weight:600;color:var(--txt);margin-bottom:10px;">Snel op weg</p>
+      <div class="hp-quick-link">
+        <div class="hp-ql-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+        <div><div class="hp-ql-title">Snel zoeken</div><div class="hp-ql-sub">Zoek direct op functie, rol, trefwoord of expertise.</div></div>
+      </div>
+      <div class="hp-quick-link" onclick="goPage('fg')">
+        <div class="hp-ql-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div><div class="hp-ql-title">Verken per functiefamilie</div><div class="hp-ql-sub">Start vanuit jouw vakgebied en vind alle bijbehorende functies.</div></div>
+      </div>
+      <div class="hp-quick-link">
+        <div class="hp-ql-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div><div class="hp-ql-title">Populaire en relevante functies</div><div class="hp-ql-sub">Zie in één oogopslag welke functies vaak worden bekeken.</div></div>
+      </div>
+      <div class="hp-quick-link">
+        <div class="hp-ql-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div><div class="hp-ql-title">Bewaar en vergelijk</div><div class="hp-ql-sub">Sla functies op als favoriet en vergelijk ze wanneer het jou uitkomt.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hp-footer">
+    <div class="hp-footer-item">
+      <div class="hp-footer-icon">◎</div>
+      <div><div class="hp-footer-title">Eén startpunt. Alles binnen handbereik.</div><div class="hp-footer-sub">De medewerker begint hier zijn reis door het functiehuis.</div></div>
+    </div>
+    <div class="hp-footer-item">
+      <div class="hp-footer-icon">◎</div>
+      <div><div class="hp-footer-title">Vind sneller wat je zoekt</div><div class="hp-footer-sub">Duidelijke indeling en zoekfunctie besparen tijd en zoekwerk.</div></div>
+    </div>
+    <div class="hp-footer-item">
+      <div class="hp-footer-icon">◎</div>
+      <div><div class="hp-footer-title">Begrijp de samenhang</div><div class="hp-footer-sub">Zie hoe functies zich verhouden binnen Odion.</div></div>
+    </div>
+    <div class="hp-footer-item">
+      <div class="hp-footer-icon">◎</div>
+      <div><div class="hp-footer-title">Groei met inzicht</div><div class="hp-footer-sub">Ontdek kansen, ontwikkel jezelf en maak bewuste keuzes.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE 2 – GENERIEKE LANDINGSPAGINA (slide 5)
+═══════════════════════════════════════════════════════════ -->
+<div id="page-glp" class="page">
+  <div class="breadcrumb">
+    <a onclick="goPage('home')">Home</a><span class="bc-sep">›</span>
+    <a onclick="goPage('home')">Begeleiding</a><span class="bc-sep">›</span>
+    <a onclick="goPage('glp')">Cliëntondersteuner</a><span class="bc-sep">›</span>
+    <span class="bc-cur">Niveau I (FWG 45)</span>
+  </div>
+  <a class="back-link" onclick="goPage('home')">← Terug naar Begeleiding</a>
+
+  <div class="glp-layout">
+    <div class="glp-main">
+      <div class="glp-hero">
+        <div>
+          <div class="glp-h1-row">
+            <h1 class="glp-h1">Cliëntondersteuner I</h1>
+            <span class="glp-fwg-badge">FWG 45</span>
+          </div>
+          <p class="glp-desc">Binnen Odion vallen verschillende specialistische functies onder de generieke functienaam Cliëntondersteuner I. Deze functies hebben dezelfde FWG-indeling en delen dezelfde kern van verantwoordelijkheden, maar verschillen in doelgroep, context en specifieke werkzaamheden.</p>
+        </div>
+        <div class="glp-photo">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#9B8AA2" stroke-width="1.2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+      </div>
+
+      <div class="glp-table-section">
+        <div class="glp-table-header">
+          <div class="glp-table-title">Kies jouw specialistische functie</div>
+        </div>
+        <table class="glp-table">
+          <thead>
+            <tr>
+              <th class="glp-th" style="width:36px;"></th>
+              <th class="glp-th" style="width:160px;">Specialistische functie</th>
+              <th class="glp-th">Korte omschrijving</th>
+              <th class="glp-th" style="width:180px;">Context</th>
+              <th class="glp-th" style="width:32px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="glp-row" onclick="goPage('rp')">
+              <td class="glp-td"><div class="glp-func-icon">🤝</div></td>
+              <td class="glp-td"><div class="glp-func-name">Trajectbegeleider</div></td>
+              <td class="glp-td"><div class="glp-func-desc">Organiseert en faciliteert een betekenisvolle dag door cliënten te begeleiden naar passende participatie, werk en ontwikkeling, in samenwerking met regionale partners.</div></td>
+              <td class="glp-td"><div class="glp-context-tag">👥 Arbeid &amp; participatie</div></td>
+              <td class="glp-td" style="text-align:center;color:var(--txt3);">›</td>
+            </tr>
+            <tr class="glp-row">
+              <td class="glp-td"><div class="glp-func-icon">🔄</div></td>
+              <td class="glp-td"><div class="glp-func-name">Regiebegeleider</div></td>
+              <td class="glp-td"><div class="glp-func-desc">Coördineert complexe begeleiding, vertaalt behandelbeleid naar de praktijk en coacht collega's bij multidisciplinaire cliëntsituaties.</div></td>
+              <td class="glp-td"><div class="glp-context-tag">👥 Complexe ondersteuning</div></td>
+              <td class="glp-td" style="text-align:center;color:var(--txt3);">›</td>
+            </tr>
+            <tr class="glp-row">
+              <td class="glp-td"><div class="glp-func-icon">🔊</div></td>
+              <td class="glp-td"><div class="glp-func-name">Persoonlijk Begeleider Auditief</div></td>
+              <td class="glp-td"><div class="glp-func-desc">Ondersteunt cliënten met een auditieve beperking bij communicatie, zelfredzaamheid en participatie binnen hun leefomgeving.</div></td>
+              <td class="glp-td"><div class="glp-context-tag">🎯 Auditieve beperking</div></td>
+              <td class="glp-td" style="text-align:center;color:var(--txt3);">›</td>
+            </tr>
+            <tr class="glp-row">
+              <td class="glp-td"><div class="glp-func-icon">🏠</div></td>
+              <td class="glp-td"><div class="glp-func-name">Ambulant Begeleider</div></td>
+              <td class="glp-td"><div class="glp-func-desc">Begeleidt cliënten zelfstandig in de thuissituatie en ondersteunt hen bij het organiseren van het dagelijks leven en het realiseren van persoonlijke doelen.</div></td>
+              <td class="glp-td"><div class="glp-context-tag">📍 Dagelijks leven</div></td>
+              <td class="glp-td" style="text-align:center;color:var(--txt3);">›</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="glp-more-note">Meer specialistische functies binnen Cliëntondersteuner I? Afhankelijk van de ontwikkeling van ons functiehuis kan dit in de toekomst uitbreiden.</div>
+      </div>
+    </div>
+
+    <div class="glp-sidebar">
+      <div class="glp-sb-card">
+        <div class="glp-sb-title">
+          <div class="glp-sb-icon" style="background:var(--pu-light);color:var(--pu);">ℹ</div>
+          Waarom zie ik deze pagina?
+        </div>
+        <p style="font-size:12px;color:var(--txt2);line-height:1.6;">Odion gebruikt generieke functienamen om functies te groeperen.<br><br>De formele functiebeschrijvingen blijven ongewijzigd.<br><br>Kies hieronder de specialistische functie die het beste aansluit bij jouw werk.</p>
+      </div>
+      <div class="glp-sb-card">
+        <div class="glp-sb-title">
+          <div class="glp-sb-icon" style="background:#FFF8E0;color:#D4A830;">⭐</div>
+          Samen delen we dezelfde basis
+        </div>
+        <div class="glp-check-row"><span class="glp-check">✓</span> FWG 45</div>
+        <div class="glp-check-row"><span class="glp-check">✓</span> Generieke functienaam: Cliëntondersteuner I</div>
+        <div class="glp-check-row"><span class="glp-check">✓</span> Zelfstandig professioneel handelen</div>
+        <div class="glp-check-row"><span class="glp-check">✓</span> Coördinatie rondom cliënt</div>
+        <div class="glp-check-row"><span class="glp-check">✓</span> Afstemming met netwerk</div>
+      </div>
+      <div class="glp-sb-card">
+        <div class="glp-sb-title">
+          <div class="glp-sb-icon" style="background:var(--bg);color:var(--txt2);">📄</div>
+          Meer weten over deze generieke functie?
+        </div>
+        <p style="font-size:12px;color:var(--txt2);line-height:1.6;margin-bottom:8px;">Bekijk uitleg over de opbouw, niveaus en indeling van de generieke functie Cliëntondersteuner.</p>
+        <a class="glp-sb-link">Lees meer →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="glp-cta-bar">
+    <div>
+      <div class="glp-cta-text">Heb je vragen over deze functies of jouw loopbaan?</div>
+      <div class="glp-cta-sub">Stel je vraag aan Odi, onze AI-assistent.</div>
+    </div>
+    <button class="glp-cta-btn">🤖 Vraag het aan Odi →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE 3 – ROLPAGINA (slide 6)
+═══════════════════════════════════════════════════════════ -->
+<div id="page-rp" class="page">
+  <div class="breadcrumb">
+    <a onclick="goPage('home')">Home</a><span class="bc-sep">›</span>
+    <a onclick="goPage('home')">Begeleiding</a><span class="bc-sep">›</span>
+    <a onclick="goPage('glp')">Cliëntondersteuner I (FWG 45)</a><span class="bc-sep">›</span>
+    <span class="bc-cur">Trajectbegeleider</span>
+  </div>
+  <a class="back-link" onclick="goPage('glp')">← Terug naar Cliëntondersteuner I</a>
+
+  <div class="rp-layout">
+    <div class="rp-main">
+      <h1 class="rp-h1">Trajectbegeleider</h1>
+      <div class="rp-badges">
+        <span class="rp-badge">FWG 45</span>
+        <span class="rp-badge">Cliëntondersteuner I</span>
+        <span class="rp-badge">Begeleiding</span>
+      </div>
+      <p class="rp-intro">Je begeleidt en bemiddelt cliënten naar passende (onbetaalde) werkplekken en scholing en stimuleert hun participatie en ontwikkeling. Je werkt samen met cliënten, werkgevers en netwerkpartners om duurzame trajecten te realiseren.</p>
+
+      <div class="rp-cards">
+        <div class="rp-card">
+          <div class="rp-card-icon">🎯</div>
+          <div class="rp-card-label">Doel</div>
+          <div class="rp-card-text">Participatie en ontwikkeling van cliënten versterken door passende werk- en scholingskansen.</div>
+        </div>
+        <div class="rp-card">
+          <div class="rp-card-icon">👤</div>
+          <div class="rp-card-label">Voor wie</div>
+          <div class="rp-card-text">Cliënten die ondersteuning nodig hebben bij het vinden en behouden van werk, participatie of scholing.</div>
+        </div>
+        <div class="rp-card">
+          <div class="rp-card-icon">🤝</div>
+          <div class="rp-card-label">Rol in het team</div>
+          <div class="rp-card-text">Samenwerken met collega's, werkgevers en partners om duurzame trajecten te realiseren.</div>
+        </div>
+        <div class="rp-card">
+          <div class="rp-card-icon">✅</div>
+          <div class="rp-card-label">Verantwoordelijk voor</div>
+          <div class="rp-card-text">Instroom, trajectplannen, werkplekken, voortgang en rapportage van trajecten.</div>
+        </div>
+        <div class="rp-card">
+          <div class="rp-card-icon">✏️</div>
+          <div class="rp-card-label">Kernkwaliteit</div>
+          <div class="rp-card-text">Verbindend, vindingrijk en resultaatgericht met oog voor talenten en mogelijkheden.</div>
+        </div>
+      </div>
+
+      <div class="rp-section-title">Wat doe je?</div>
+      <p class="rp-section-intro">Als trajectbegeleider organiseer en faciliteer je een betekenisvolle dag voor cliënten door hen te begeleiden naar passende participatie, werk en ontwikkeling.</p>
+      <div class="rp-check-row"><span class="rp-check">✓</span> Voert intake- en oriënterende gesprekken en inventariseert wensen en mogelijkheden.</div>
+      <div class="rp-check-row"><span class="rp-check">✓</span> Stelt samen met de cliënt een trajectplan op, bewaakt de voortgang en stelt bij waar nodig.</div>
+      <div class="rp-check-row"><span class="rp-check">✓</span> Initieert en onderhoudt contacten met werkgevers en partners en realiseert (onbetaalde) werkplekken.</div>
+      <div class="rp-check-row"><span class="rp-check">✓</span> Informeert en adviseert cliënten en werkgevers over mogelijkheden, voorwaarden en regelgeving.</div>
+      <div class="rp-check-row"><span class="rp-check">✓</span> Draagt zorg voor registratie, samenwerkingsovereenkomsten en rapportages over de voortgang.</div>
+      <a class="rp-more-link">Bekijk alle werkzaamheden en verantwoordelijkheden →</a>
+
+      <div style="margin-top:24px;padding:14px 16px;background:var(--bg);border:1px dashed var(--border2);border-radius:8px;display:flex;align-items:center;gap:10px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--txt);">Waar staat deze functie in het geheel?</div>
+          <a class="rp-more-link" style="margin-top:4px;" onclick="goPage('fg')">Bekijk het generieke functiehuis →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rp-sidebar">
+      <div class="rp-sb-card">
+        <div class="rp-sb-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Officiële informatie
+        </div>
+        <div class="rp-sb-pdf-row">
+          <div>
+            <div style="display:flex;align-items:center;gap:7px;">
+              <div class="rp-pdf-icon">PDF</div>
+              <div>
+                <div class="rp-pdf-label">Functiebeschrijving</div>
+                <div class="rp-pdf-sub">Trajectbegeleider</div>
+              </div>
+            </div>
+          </div>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+        <div class="rp-sb-pdf-row">
+          <div>
+            <div style="display:flex;align-items:center;gap:7px;">
+              <div class="rp-pdf-icon">PDF</div>
+              <div>
+                <div class="rp-pdf-label">Indelingsadvies</div>
+                <div class="rp-pdf-sub">Trajectbegeleider (FWG 45)</div>
+              </div>
+            </div>
+          </div>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+      <div class="rp-sb-card">
+        <div class="rp-sb-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--pu)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Meer weten over jouw inschaling?
+        </div>
+        <p style="font-size:12px;color:var(--txt2);line-height:1.6;margin-bottom:10px;">Wil je weten hoe de indeling van jouw functie tot stand is gekomen? Via Odiquest krijg je toegang tot de FWG-inzageversie, inclusief uitleg, instructie en instructievideo.</p>
+        <button class="rp-btn">↗ Open in Odiquest</button>
+      </div>
+      <div class="rp-sb-card">
+        <div class="rp-sb-title">🤖 Vraag het aan Odi</div>
+        <p style="font-size:12px;color:var(--txt2);margin-bottom:10px;">Stel je vraag over deze functie aan onze AI-assistent.</p>
+        <button class="rp-btn rp-btn-solid">Vraag het aan Odi →</button>
+      </div>
+      <div class="rp-sb-card">
+        <div class="rp-sb-title">
+          <span style="color:var(--mul);font-size:16px;">⚖</span> Vergelijkbare functies
+        </div>
+        <p style="font-size:12px;color:var(--txt2);margin-bottom:8px;">Benieuwd naar functies die hierop aansluiten?</p>
+        <button class="rp-btn">Bekijk vergelijkbare functies →</button>
+      </div>
+      <div class="rp-sb-card">
+        <div class="rp-sb-title">
+          <span style="color:var(--green);font-size:16px;">↗</span> Ontwikkeling
+        </div>
+        <div class="rp-sb-green-row">Bekijk ontwikkelpaden <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="rp-sb-green-row" onclick="goPage('fg')">Mijn positie binnen het functiehuis <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+      </div>
+    </div>
+  </div>
+  <div class="rp-info-bar">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    Deze informatie is een samenvatting. Raadpleeg de officiële documenten voor de volledige beschrijving van de functie en de indeling.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PAGE 4 – FUNCTIEHUIS / MATRIX (slide 7)
+═══════════════════════════════════════════════════════════ -->
+<div id="page-fg" class="page">
+  <div class="fg-breadcrumb">
+    <a onclick="goPage('home')" style="color:var(--txt3);text-decoration:none;cursor:pointer;">Home</a>
+    <span>›</span>
+    <span style="color:var(--pu);">Functiehuis Odion</span>
+  </div>
+
+  <div class="fg-layout">
+    <div class="fg-main">
+      <h1 class="fg-h1">Functiehuis Odion</h1>
+      <p class="fg-sub">Het complete overzicht van generieke functies binnen Odion.</p>
+
+      <!-- filter panel -->
+      <div class="fg-filters">
+        <div class="fg-filter-group">
+          <div class="fg-filter-label">Werk-/denkniveau</div>
+          <div class="fg-level-chips">
+            <button class="fg-chip" onclick="toggleChip(this)">VMBO</button>
+            <button class="fg-chip" onclick="toggleChip(this)">MBO</button>
+            <button class="fg-chip on" onclick="toggleChip(this)">HBO</button>
+            <button class="fg-chip" onclick="toggleChip(this)">WO</button>
+          </div>
+        </div>
+        <div class="fg-filter-group">
+          <div class="fg-filter-label">FWG (GGZ)</div>
+          <div class="fg-level-chips" id="fwgChips">
+            <button class="fg-chip" onclick="fwgFilter(this,5)">5</button>
+            <button class="fg-chip" onclick="fwgFilter(this,10)">10</button>
+            <button class="fg-chip" onclick="fwgFilter(this,15)">15</button>
+            <button class="fg-chip" onclick="fwgFilter(this,20)">20</button>
+            <button class="fg-chip" onclick="fwgFilter(this,25)">25</button>
+            <button class="fg-chip" onclick="fwgFilter(this,30)">30</button>
+            <button class="fg-chip" onclick="fwgFilter(this,35)">35</button>
+            <button class="fg-chip" onclick="fwgFilter(this,40)">40</button>
+            <button class="fg-chip" onclick="fwgFilter(this,45)">45</button>
+            <button class="fg-chip" onclick="fwgFilter(this,50)">50</button>
+            <button class="fg-chip" onclick="fwgFilter(this,55)">55</button>
+            <button class="fg-chip" onclick="fwgFilter(this,60)">60</button>
+            <button class="fg-chip" onclick="fwgFilter(this,65)">65</button>
+            <button class="fg-chip" onclick="fwgFilter(this,70)">70</button>
+            <button class="fg-chip" onclick="fwgFilter(this,75)">75</button>
+            <button class="fg-chip" onclick="fwgFilter(this,80)">80</button>
+          </div>
+        </div>
+        <div class="fg-filter-group">
+          <div class="fg-filter-label">Zoek specialistische functie</div>
+          <div class="fg-search-func">
+            <div class="fg-search-input-wrap">
+              <span class="fg-search-icon">🔍</span>
+              <input type="text" placeholder="Persoonlijk Begeleider" id="fg-search" oninput="fgSearch(this.value)">
+            </div>
+            <div class="fg-result-box" id="fgResult" style="display:none;">
+              <div class="fg-result-lbl">Domein</div>
+              <div class="fg-result-domain" id="fgResD">—</div>
+              <div class="fg-result-lbl" style="margin-top:5px;">Generieke functie</div>
+              <div class="fg-result-func" id="fgResF">—</div>
+              <div class="fg-result-lbl" style="margin-top:5px;">FWG (GGZ)</div>
+              <div class="fg-result-fwg" id="fgResFWG">—</div>
+              <button class="fg-result-btn" onclick="goPage('rp')">Bekijk functie →</button>
+            </div>
+          </div>
+        </div>
+        <div class="fg-filter-group fg-domain-row">
+          <div class="fg-filter-label">Functiefamilie</div>
+          <div class="fg-level-chips" id="domainChips">
+            <button class="fg-chip on" onclick="domainFilter(this,'all')">Alle domeinen</button>
+            <button class="fg-chip" onclick="domainFilter(this,'beg')">Begeleiding</button>
+            <button class="fg-chip" onclick="domainFilter(this,'mul')">Multidisciplinair</button>
+            <button class="fg-chip" onclick="domainFilter(this,'sso')">Services, Staff &amp; Ondersteuning</button>
+            <button class="fg-chip" onclick="domainFilter(this,'lei')">Leidinggevende</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- matrix -->
+      <div class="fg-matrix">
+        <table class="fg-matrix-table" id="fgTable">
+          <thead>
+            <tr>
+              <th class="fg-th-fwg" rowspan="2">FWG</th>
+              <th class="fg-th-domain beg" colspan="5" data-domain="beg">BEGELEIDING</th>
+              <th class="fg-th-domain mul" colspan="5" data-domain="mul">MULTIDISCIPLINAIR</th>
+              <th class="fg-th-domain sso" colspan="6" data-domain="sso">SERVICES, STAFF &amp; ONDERSTEUNING</th>
+              <th class="fg-th-domain lei" colspan="2" data-domain="lei">LEIDINGGEVENDE</th>
+              <th class="fg-th-fwg" rowspan="2">FWG</th>
+            </tr>
+            <tr id="fgSubHead">
+              <th class="fg-th-sub" data-domain="beg">Medewerker Services</th>
+              <th class="fg-th-sub" data-domain="beg">Medewerker Ondersteuning</th>
+              <th class="fg-th-sub" data-domain="beg">Cliënt-ondersteuner</th>
+              <th class="fg-th-sub" data-domain="beg">Participatie-ondersteuner</th>
+              <th class="fg-th-sub" data-domain="beg">Verpleeg-kundige</th>
+              <th class="fg-th-sub" data-domain="mul">Begeleiding &amp; Ondersteuning</th>
+              <th class="fg-th-sub" data-domain="mul">Psycho Sociaal Hulpverlener</th>
+              <th class="fg-th-sub" data-domain="mul">Para Medisch Behandelaar</th>
+              <th class="fg-th-sub" data-domain="mul">Behandelaar</th>
+              <th class="fg-th-sub" data-domain="mul">Arts</th>
+              <th class="fg-th-sub" data-domain="sso">Administratief Medewerker</th>
+              <th class="fg-th-sub" data-domain="sso">Adviseur</th>
+              <th class="fg-th-sub" data-domain="sso">Adviseur ICT</th>
+              <th class="fg-th-sub" data-domain="sso">Medewerker ICT</th>
+              <th class="fg-th-sub" data-domain="sso">Stafmedewerker</th>
+              <th class="fg-th-sub" data-domain="sso">Projectleider</th>
+              <th class="fg-th-sub" data-domain="lei">Leidinggevende</th>
+              <th class="fg-th-sub" data-domain="lei">Directeur</th>
+            </tr>
+          </thead>
+          <tbody id="fgBody"></tbody>
+        </table>
+      </div>
+
+      <div class="fg-detail" id="fgDetail"></div>
+
+      <div class="fg-legend">
+        <div class="fg-leg-item"><div class="fg-leg-dot" style="background:var(--beg);"></div> Begeleiding</div>
+        <div class="fg-leg-item"><div class="fg-leg-dot" style="background:var(--mul);"></div> Multidisciplinair</div>
+        <div class="fg-leg-item"><div class="fg-leg-dot" style="background:var(--sso);"></div> SSO</div>
+        <div class="fg-leg-item"><div class="fg-leg-dot" style="background:var(--beg);"></div> Leidinggevende</div>
+        <div class="fg-leg-item"><div class="fg-leg-dot" style="background:var(--red);border-radius:50%;"></div> Jouw functie</div>
+        <div style="margin-left:auto;font-size:11px;color:var(--txt3);">Elke letter staat voor een functiegroep binnen het FWG-niveau</div>
+      </div>
+    </div>
+
+    <div class="fg-sidebar">
+      <!-- Odi -->
+      <div class="fg-sb-odi">
+        <div class="fg-odi-avatar">🤖</div>
+        <div style="flex:1;">
+          <div class="fg-odi-title">Vraag het aan Odi</div>
+          <div class="fg-odi-sub">Onze AI-assistent helpt je verder.</div>
+          <div class="fg-odi-questions">
+            <div class="fg-odi-q">Ik wil doorgroeien. Welke functies passen bij mijn opleiding? <span>›</span></div>
+            <div class="fg-odi-q">Welke functies lijken op Persoonlijk Begeleider? <span>›</span></div>
+            <div class="fg-odi-q">Wat is het verschil tussen Regiebegeleider en Trajectbegeleider? <span>›</span></div>
+          </div>
+          <div class="fg-odi-input">
+            <input type="text" placeholder="Stel je vraag…">
+            <button class="fg-odi-send">→</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- meer mogelijkheden -->
+      <div class="fg-sb-card">
+        <div class="fg-sb-card-title">Meer mogelijkheden</div>
+        <div class="fg-sb-row">Vergelijk functies <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+        <div class="fg-sb-row">Ontwikkelmogelijkheden <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fg-footer">
+    <a onclick="goPage('home')">← Terug naar vorige pagina's</a>
+    <span>📅 Laatst bijgewerkt januari 2027</span>
+  </div>
+</div>
+
+<script>
+// ── PAGE ROUTING ─────────────────────────────────────────
+const pages = {
+  home: 'page-home',
+  glp:  'page-glp',
+  rp:   'page-rp',
+  fg:   'page-fg'
+};
+function goPage(key) {
+  Object.values(pages).forEach(id => {
+    document.getElementById(id).classList.remove('active');
+  });
+  document.getElementById(pages[key]).classList.add('active');
+  window.scrollTo(0,0);
+  // nav highlight
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  if (key === 'home') document.getElementById('nl-home').classList.add('active');
+  if (key === 'fg')   document.getElementById('nl-fg').classList.add('active');
+}
+
+// ── HP SEARCH ─────────────────────────────────────────────
+function hpSearch(val) {
+  if (val.trim().length > 1) goPage('glp');
+}
+function hpTagSearch(term) {
+  document.getElementById('hp-search').value = term;
+  goPage('glp');
+}
+
+// ── MATRIX DATA ─────────────────────────────────────────
+// columns: [MwServices, MwOndersteuning, Clientond, Participatie, Verpleeg, Beg&Ond, PSHulpv, ParaMed, Behandelaar, Arts, AdmMw, Adviseur, AdviseurICT, MwICT, Stafmw, Projectleider, Leidinggevende, Directeur]
+// domain tags:  beg beg beg beg beg  mul mul mul mul mul  sso sso sso sso sso sso  lei lei
+const COL_DOMAINS = ['beg','beg','beg','beg','beg','mul','mul','mul','mul','mul','sso','sso','sso','sso','sso','sso','lei','lei'];
+
+const MATRIX = [
+  { fwg:  5, cells: ['E','','','','',  '','','','','',  '','','','','','',  '',''] },
+  { fwg: 10, cells: ['E','E','','','', '','','','','',  '','','','','','',  '',''] },
+  { fwg: 15, cells: ['F','F','','','', '','','','','',  '','','','','','',  '',''] },
+  { fwg: 20, cells: ['','','G','','',  '','','','','',  'G','','','','','', '',''] },
+  { fwg: 25, cells: ['','','H','H','', '','','','','',  'H','','','','','', '',''] },
+  { fwg: 30, cells: ['','','H','H','H','H','','','','', 'H','','','','','', '',''] },
+  { fwg: 35, cells: ['','','I','I','I','I','','','','', 'I','','','','','', '',''] },
+  { fwg: 40, cells: ['','','J','J','J','J','','','','', 'J','J','J','J','J','J', 'J',''] },
+  { fwg: 45, cells: ['','','I','I','I','I','','','','', 'L','','','','','', 'I',''] }, // you=Trajectbegeleider
+  { fwg: 50, cells: ['','','J','J','J','J','','','','', 'J','J','J','J','J','J', 'J',''] },
+  { fwg: 55, cells: ['','','','','',  '','K','K','','', 'K','K','K','K','K','', 'K',''] },
+  { fwg: 60, cells: ['','','','','',  '','','L','L','', 'L','L','','L','','L', 'L',''] },
+  { fwg: 65, cells: ['','','','','',  '','','','M','',  'M','M','M','','M','', 'M',''] },
+  { fwg: 70, cells: ['','','','','',  '','','','N','N', 'N','N','','N','','', 'N',''] },
+  { fwg: 75, cells: ['','','','','',  '','','','P','P', '','','','','','',  '',''] },
+  { fwg: 80, cells: ['','','','','',  '','','','Q','Q', '','','','','','',  '','P'] },
+];
+
+const CELL_LABELS = [
+  'Medewerker Services','Medewerker Ondersteuning','Cliëntondersteuner','Participatieondersteuner','Verpleegkundige',
+  'Begeleiding & Ondersteuning','Psychosociaal Hulpverlener','Paramedisch Behandelaar','Behandelaar','Arts',
+  'Administratief Medewerker','Adviseur','Adviseur ICT','Medewerker ICT','Stafmedewerker','Projectleider',
+  'Leidinggevende','Directeur'
+];
+
+let activeFwg = null;
+let activeDomain = 'all';
+
+function buildMatrix() {
+  const tbody = document.getElementById('fgBody');
+  tbody.innerHTML = '';
+  MATRIX.forEach((row, ri) => {
+    const tr = document.createElement('tr');
+    const rowActive = (row.fwg === activeFwg);
+    if (rowActive) tr.style.background = 'rgba(123,45,139,0.08)';
+
+    // fwg label
+    const fwgTd = document.createElement('td');
+    fwgTd.className = 'fg-fwg-lbl';
+    fwgTd.style.textAlign = 'center';
+    fwgTd.style.padding = '4px 3px';
+    fwgTd.style.fontWeight = rowActive ? '800' : '600';
+    fwgTd.style.color = rowActive ? 'var(--pu)' : 'white';
+    fwgTd.style.background = rowActive ? 'var(--pu-light)' : '#5C5070';
+    fwgTd.style.fontSize = '10px';
+    fwgTd.style.border = '1px solid var(--border)';
+    fwgTd.style.cursor = 'pointer';
+    fwgTd.onclick = () => fwgRowToggle(row.fwg);
+    fwgTd.textContent = row.fwg;
+    tr.appendChild(fwgTd);
+
+    row.cells.forEach((letter, ci) => {
+      const td = document.createElement('td');
+      td.className = 'fg-cell';
+      const dom = COL_DOMAINS[ci];
+      td.dataset.domain = dom;
+      const domDimmed = (activeDomain !== 'all' && dom !== activeDomain);
+      if (domDimmed) {
+        td.style.opacity = '0.15';
+        td.style.background = '#F5F5F5';
+      } else if (rowActive) {
+        td.style.background = 'rgba(123,45,139,0.10)';
+      }
+      if (letter) {
+        td.classList.add('has-letter');
+        const isYou = (row.fwg === 45 && ci === 2 && letter === 'I');
+        const span = document.createElement('span');
+        span.className = 'fg-letter ' + (isYou ? 'you' : dom);
+        span.textContent = letter;
+        td.appendChild(span);
+        const lbl = CELL_LABELS[ci];
+        td.title = `${lbl} · FWG ${row.fwg} · Groep ${letter}`;
+        td.onclick = () => showCellDetail(lbl, dom, row.fwg, letter, isYou);
+      }
+      tr.appendChild(td);
+    });
+
+    // trailing fwg
+    const fwgTd2 = document.createElement('td');
+    fwgTd2.className = 'fg-fwg-lbl';
+    fwgTd2.style.textAlign = 'center';
+    fwgTd2.style.padding = '4px 3px';
+    fwgTd2.style.fontWeight = rowActive ? '800' : '600';
+    fwgTd2.style.color = rowActive ? 'var(--pu)' : 'white';
+    fwgTd2.style.background = rowActive ? 'var(--pu-light)' : '#5C5070';
+    fwgTd2.style.fontSize = '10px';
+    fwgTd2.style.border = '1px solid var(--border)';
+    fwgTd2.style.cursor = 'pointer';
+    fwgTd2.onclick = () => fwgRowToggle(row.fwg);
+    fwgTd2.textContent = row.fwg;
+    tr.appendChild(fwgTd2);
+
+    tbody.appendChild(tr);
+  });
+}
+
+function showCellDetail(label, domain, fwg, letter, isYou) {
+  const domNames = { beg:'Begeleiding', mul:'Multidisciplinair', sso:'Services, Staff & Ondersteuning', lei:'Leidinggevende' };
+  const d = document.getElementById('fgDetail');
+  let you = isYou ? '<strong> ← Jouw huidige functie (Trajectbegeleider)</strong>' : '';
+  d.innerHTML = `<strong>${domNames[domain]}</strong> · <strong>FWG ${fwg}</strong> · Groep ${letter} · ${label}${you}`;
+  d.className = 'fg-detail visible';
+}
+
+function fwgRowToggle(fwg) {
+  activeFwg = (activeFwg === fwg) ? null : fwg;
+  document.querySelectorAll('#fwgChips .fg-chip').forEach(c => {
+    c.classList.toggle('on', parseInt(c.textContent) === activeFwg);
+  });
+  buildMatrix();
+}
+
+function fwgFilter(el, fwg) {
+  const already = el.classList.contains('on');
+  document.querySelectorAll('#fwgChips .fg-chip').forEach(c => c.classList.remove('on'));
+  if (already) {
+    activeFwg = null;
+  } else {
+    el.classList.add('on');
+    activeFwg = fwg;
+  }
+  buildMatrix();
+}
+
+function domainFilter(el, dom) {
+  document.querySelectorAll('#domainChips .fg-chip').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  activeDomain = dom;
+  buildMatrix();
+}
+
+function toggleChip(el) {
+  el.classList.toggle('on');
+}
+
+// fg search
+const FG_FUNCS = [
+  { name: 'Persoonlijk Begeleider',   domain: 'Begeleiding',      generic: 'Cliëntondersteuner H', fwg: '40' },
+  { name: 'Trajectbegeleider',        domain: 'Begeleiding',      generic: 'Cliëntondersteuner I', fwg: '45' },
+  { name: 'Regiebegeleider',          domain: 'Begeleiding',      generic: 'Cliëntondersteuner I', fwg: '45' },
+  { name: 'Ambulant Begeleider',      domain: 'Begeleiding',      generic: 'Cliëntondersteuner I', fwg: '45' },
+  { name: 'Verpleegkundige',          domain: 'Begeleiding',      generic: 'Verpleegkundige J',    fwg: '50' },
+  { name: 'Adviseur ICT',             domain: 'SSO',              generic: 'Adviseur ICT',         fwg: '50' },
+  { name: 'GZ-psycholoog',            domain: 'Multidisciplinair',generic: 'Behandelaar M',        fwg: '65' },
+  { name: 'Teamleider',               domain: 'Leidinggevende',   generic: 'Leidinggevende K',     fwg: '55' },
+];
+
+function fgSearch(val) {
+  const q = val.toLowerCase().trim();
+  const box = document.getElementById('fgResult');
+  if (!q) { box.style.display = 'none'; return; }
+  const found = FG_FUNCS.find(f => f.name.toLowerCase().includes(q));
+  if (found) {
+    box.style.display = 'block';
+    document.getElementById('fgResD').textContent = found.domain;
+    document.getElementById('fgResF').textContent = found.generic;
+    document.getElementById('fgResFWG').textContent = found.fwg;
+  } else {
+    box.style.display = 'none';
+  }
+}
+
+// initialise
+buildMatrix();
+</script>
+</body>
+</html>
